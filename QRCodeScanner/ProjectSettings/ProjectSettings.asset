@@ -136,8 +136,7 @@ PlayerSettings:
     Others: 1
   bundleVersion: 0.1
   preloadedAssets:
-  - {fileID: 8414392640168142033, guid: eb425ac4a62894a49ac5ccdecdc37e60, type: 2}
-  - {fileID: 9041883458989228572, guid: 5f78841dc2540cd46bf79cda5ecd1859, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -629,11 +628,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: Victor
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: C:\WorkSpace\Unity\UtilityDevelopments\Utility_Hololens\QRCodeScanner\Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: Victor
+  metroCertificateIssuer: Victor
+  metroCertificateNotAfter: 80217409fe9dd901
   metroApplicationDescription: "Hololens\u5DE5\u5177\u958B\u767C"
   wsaImages: {}
   metroTileShortName: Utility_Hololens

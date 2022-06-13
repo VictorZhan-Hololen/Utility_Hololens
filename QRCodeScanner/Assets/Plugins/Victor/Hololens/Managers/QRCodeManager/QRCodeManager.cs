@@ -23,7 +23,7 @@ namespace Victor.Hololens.Managers
         private QRCodeWatcherAccessStatus accessStatus;
         private System.Threading.Tasks.Task<QRCodeWatcherAccessStatus> capabilityTask;
 
-        async public virtual void Start()
+        async protected virtual void Start()
         {
             IsSupported = QRCodeWatcher.IsSupported();
             capabilityTask = QRCodeWatcher.RequestAccessAsync();
@@ -90,13 +90,9 @@ namespace Victor.Hololens.Managers
             }
         }
 
-
         private void QRCodeWatcher_Added(object sender, QRCodeAddedEventArgs args) => OnQRCodeAdded?.Invoke(sender, args.Code);
-
         private void QRCodeWatcher_Updated(object sender, QRCodeUpdatedEventArgs args) => OnQRCodeUpdated?.Invoke(sender, args.Code);
-
         private void QRCodeWatcher_Removed(object sender, QRCodeRemovedEventArgs args) => OnQRCodeRemoved?.Invoke(sender, args.Code);
-
         private void QRCodeWatcher_EnumerationCompleted(object sender, object e) => Debug.Log($"Enum:{e}");
     }
 }

@@ -8,15 +8,15 @@ public class GameManager : MonoBehaviour
 {
     public TextMesh textMesh;
 
+    private QRCodeDataHandler qrCodeHandler;
     private string reciveQRCode;
-
-    private IEnumerator resetQRCodeCoroutine;
-    private int resetQRCodeSec = 3;
-    private string currentQRCode;
 
     void Start()
     {
         QRCodeManager.Instance.OnQRCodeUpdated += OnQRCodeUpdated;
+        qrCodeHandler = new QRCodeDataHandler(this);
+        qrCodeHandler.OnResultQRCode += OnResultQRCode;
+        qrCodeHandler.OnResetQRCode += OnResetQRCode;
     }
 
     private void OnQRCodeUpdated(object sender, Microsoft.MixedReality.QR.QRCode e)
@@ -24,30 +24,19 @@ public class GameManager : MonoBehaviour
         reciveQRCode = e.Data;
     }
 
+    private void OnResultQRCode(object sender, string data)
+    {
+        Debug.Log($"OnResultQRCode:{data}");
+    }
+    private void OnResetQRCode(object sender, EventArgs e)
+    {
+        reciveQRCode = "";
+    }
+
+
     // Update is called once per frame
     void Update()
     {
-        OnReciveQRCode();
-    }
-
-    private void OnReciveQRCode()
-    {
-        if (string.IsNullOrEmpty(reciveQRCode)) return;
-        if (currentQRCode == reciveQRCode) return;
-        currentQRCode = reciveQRCode;
-
-        textMesh.text = currentQRCode;
-        Debug.Log($"OnReciveQRCode:{currentQRCode}");
-
-        if (resetQRCodeCoroutine != null) StopCoroutine(resetQRCodeCoroutine);
-        resetQRCodeCoroutine = ResetQRCode();
-        StartCoroutine(resetQRCodeCoroutine);
-    }
-
-    private IEnumerator ResetQRCode()
-    {
-        yield return new WaitForSeconds(resetQRCodeSec);
-        currentQRCode = "";
-        reciveQRCode = "";
+        qrCodeHandler.HandlerQRCode(reciveQRCode);
     }
 }
