@@ -138,6 +138,7 @@ PlayerSettings:
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -628,7 +629,7 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: Victor
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: C:\WorkSpace\Unity\UtilityDevelopments\Utility_Hololens\QRCodeScanner\Assets\WSATestCertificate.pfx
+  metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: Victor
   metroCertificateIssuer: Victor
@@ -650,6 +651,9 @@ PlayerSettings:
   platformCapabilities:
     WindowsStoreApps:
       GazeInput: True
+      MusicLibrary: False
+      PrivateNetworkClientServer: True
+      InternetClientServer: True
       SpatialPerception: True
       InternetClient: True
       WebCam: True
