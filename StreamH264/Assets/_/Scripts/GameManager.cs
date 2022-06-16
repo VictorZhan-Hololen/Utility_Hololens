@@ -23,8 +23,8 @@ public class GameManager : MonoBehaviour
         webSocketClient.AddListener(OnOpen, OnReceiveMessage, OnClose);
         webSocketClient.Connect();
 
-        //cameraManager = new CameraManager(rawImage.LocalCamera);
-        //cameraManager.StartCamera();
+        cameraManager = new CameraManager(rawImage.LocalCamera);
+        cameraManager.StartCamera();
         streamingHandler = new StreamingHandler(meshRenderer, rawImage.RemoteVideo, audioSource);
     }
     /// <summary> ³s¤WWebSocket®É </summary>

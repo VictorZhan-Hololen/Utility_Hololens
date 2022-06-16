@@ -38,8 +38,17 @@ public class CameraManager
         resultTexture = new Texture2D(width, height, TextureFormat.RGBA32, false);
     }
 
-    public void StartCamera() => webcamTexture.Play();
-    public void StopCamera() => webcamTexture.Stop();
+    public void StartCamera()
+    {
+        localVideoRawImage.color = Color.white;
+        webcamTexture.Play();
+    }
+
+    public void StopCamera()
+    {
+        localVideoRawImage.color = Color.black;
+        webcamTexture.Stop();
+    }
 
     public void OnDestory() => StopCamera();
 

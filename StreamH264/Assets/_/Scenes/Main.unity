@@ -804,7 +804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2125,7 +2125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
+  m_Color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3464,7 +3464,7 @@ MonoBehaviour:
     Leave: {fileID: 11400000, guid: 23fd87e1c4ea5f44597a43d745524d97, type: 2}
   rawImage:
     RemoteVideo: {fileID: 610544789}
-    LocalCamera: {fileID: 610544789}
+    LocalCamera: {fileID: 279082683}
   meshRenderer: {fileID: 1587265351}
   audioSource: {fileID: 1074744734}
 --- !u!82 &1074744734
@@ -4159,7 +4159,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1205930197}
   - component: {fileID: 1205930196}
-  - component: {fileID: 1205930198}
   m_Layer: 0
   m_Name: Local_Camera
   m_TagString: Untagged
@@ -4194,19 +4193,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1205930198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205930195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2d25e92b5eec149881380bcf7d90eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rawImage: {fileID: 279082683}
 --- !u!1 &1297612301
 GameObject:
   m_ObjectHideFlags: 0
