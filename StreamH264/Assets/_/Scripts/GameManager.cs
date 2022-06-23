@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Victor.Utility;
 using WebSocketSharp;
 
 public class GameManager : MonoBehaviour
@@ -18,14 +19,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Start");
         webSocketClient = new WebSocketClient(config.URL.WebSocket_URL);
         webSocketClient.AddListener(OnOpen, OnReceiveMessage, OnClose);
         webSocketClient.Connect();
 
+        streamingHandler = new StreamingHandler(meshRenderer, rawImage.RemoteCamera, audioSource, rawImage.LocalCamera);
+
         cameraManager = new CameraManager(rawImage.LocalCamera);
         cameraManager.StartCamera();
-        streamingHandler = new StreamingHandler(meshRenderer, rawImage.RemoteVideo, audioSource);
     }
     /// <summary> ³s¤WWebSocket®É </summary>
     private void OnOpen(WebSocket ws, EventArgs arg2)
@@ -46,14 +47,19 @@ public class GameManager : MonoBehaviour
         webSocketClient.RemoveListener(OnOpen, OnReceiveMessage, OnClose);
     }
 
+    private int counter = 0;
     private void Update()
     {
         if (streamingHandler != null)
         {
             streamingHandler?.OnUpdate();
+            if (streamingHandler.IsRemoteConnected) streamingHandler.EncodeCameraData();
+
             if (streamingHandler.IsRemoteConnected && false)
             {
-                webSocketClient.Send(StreamingHandler.EncodeCameraData(cameraManager.CameraTexture));
+                byte[] result = streamingHandler.EncodeCameraData();
+                if (result != null)
+                    webSocketClient.Send(result);
             }
         }
     }
@@ -80,7 +86,7 @@ public class GameManager : MonoBehaviour
     [Serializable]
     public struct RawImageScreen
     {
-        public RawImage RemoteVideo;
+        public RawImage RemoteCamera;
         public RawImage LocalCamera;
     }
 
